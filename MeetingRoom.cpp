@@ -1,7 +1,6 @@
 class Solution {
 public:
-    int minMeetingRooms(vector<vector<int>>& intervals) {     
-        
+    int minMeetingRooms(vector<vector<int>>& intervals) { 
         auto compare = [&](const vector<int>& vec1, const vector<int>& vec2) {
                                     return vec1[0] < vec2[0];
                             };
