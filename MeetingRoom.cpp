@@ -1,8 +1,9 @@
 class Solution {
 public:
-    int minMeetingRooms(vector<vector<int>>& intervals) { 
+    int minMeetingRooms(vector<vector<int>>& intervals) {     
+        
         auto compare = [&](const vector<int>& vec1, const vector<int>& vec2) {
-                                    return vec1[0] < vec2[0];
+                                    return (vec1[0] < vec2[0]);
                             };
         
         // Sort elements
@@ -12,11 +13,11 @@ public:
         auto comparator = [&](int element1, int element2){ return element1 > element2; };
         priority_queue<int, vector<int>, decltype(comparator)> minHeap (comparator);
         
-        for (auto interval : intervals)
+        for (auto& interval : intervals)
         {
-            if ((minHeap.size() > 0) && (minHeap.top() <= interval.at(0)))
+            if ((minHeap.size() > 0) && (minHeap.top() <= interval[0]))
                      minHeap.pop();
-            minHeap.push(interval.at(1));
+            minHeap.push(interval[1]);
         }
 
         return minHeap.size();       
